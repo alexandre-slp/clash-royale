@@ -11,6 +11,8 @@ dash-html-components = "*"
 dash-core-components = "*"
 dash-table = "*"
 dash-daq = "*"
+requests = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"

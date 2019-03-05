@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 networks:
   default_network:
@@ -6,16 +6,16 @@ networks:
 
 services:
 
-    #########
-    ## Web ##
-    #########
-    web:
-      container_name: web
-      hostname: web
+    ###########
+    ## panel ##
+    ###########
+    panel:
+      container_name: panel
+      hostname: panel
       volumes:
-        - ./services/web:/web
+        - ./services/panel:/panel
       build:
-        context: ./services/web
+        context: ./services/panel
         args:
           - HTTP_PROXY
           - HTTPS_PROXY
@@ -32,50 +32,51 @@ services:
       networks:
         default_network:
           aliases:
-            - web
+            - panel
       expose:
         - 80
       ports:
         - 8000:80
-      command: honcho start
+#      command: honcho start
+      command: python
 
-  #############
-  ## MongoDB ##
-  #############
-  mongodb:
-    container_name: mongodb
-    hostname: mongodb
-    image: mongo:xenial
-    volumes:
-      - ./data/mongodb:/data/db
-    networks:
-      default_network:
-        aliases:
-          - mongodb
-    expose:
-      - 27017
-    ports:
-      - 27017:27017
+    #############
+    ## MongoDB ##
+    #############
+    mongodb:
+      container_name: mongodb
+      hostname: mongodb
+      image: mongo:xenial
+      volumes:
+        - ./data/mongodb:/data/db
+      networks:
+        default_network:
+          aliases:
+            - mongodb
+      expose:
+        - 27017
+      ports:
+        - 27017:27017
 
-  ###################################
-  ## NoSQLClient (Management Tool) ##
-  ## MongoDB visualizer            ##
-  ###################################
-  nosqlclient:
-    container_name: nosqlclient
-    hostname: nosqlclient
-    image: mongoclient/mongoclient
-    depends_on:
-      - mongodb
-    environment:
-      MONGO_URL: 'mongodb://mongodb:27017/'
-    volumes:
-      - ./data/nosqlclient:/data/db
-    networks:
-      default_network:
-        aliases:
-        - nosqlclient
-    expose:
-      - 3000
-    ports:
-      - 9000:3000
+    ###################################
+    ## NoSQLClient (Management Tool) ##
+    ## MongoDB visualizer            ##
+    ###################################
+    nosqlclient:
+      container_name: nosqlclient
+      hostname: nosqlclient
+      image: mongoclient/mongoclient
+      depends_on:
+        - mongodb
+      environment:
+        MONGO_URL: 'mongodb://mongodb:27017/'
+      volumes:
+        - ./data/nosqlclient:/data/db
+      networks:
+        default_network:
+          aliases:
+            - nosqlclient
+      expose:
+        - 3000
+      ports:
+        - 9000:3000
