@@ -13,6 +13,7 @@ dash-table = "*"
 dash-daq = "*"
 requests = "*"
 gunicorn = "*"
+honcho = "*"
 
 [requires]
 python_version = "3.7"
