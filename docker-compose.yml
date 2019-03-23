@@ -25,7 +25,7 @@ services:
       environment:
         LOG_LEVEL: 'INFO'
         HOST: '0.0.0.0'
-        PORT: '80'
+        PORT: '8000'
         GUNICORN_MAX_REQUESTS: '10000'
         GUNICORN_WORKERS: '1'
         PYTHONUNBUFFERED: '1'
