@@ -6,16 +6,16 @@ networks:
 
 services:
 
-    ###########
-    ## web ##
-    ###########
-    web:
-      container_name: web
-      hostname: web
+    #########
+    ## dash ##
+    #########
+    dash:
+      container_name: dash
+      hostname: dash
       volumes:
-        - ./services/web:/web
+        - ./services/dash:/dash
       build:
-        context: ./services/web
+        context: ./services/dash
         args:
           - HTTP_PROXY
           - HTTPS_PROXY
@@ -32,13 +32,13 @@ services:
       networks:
         default_network:
           aliases:
-            - web
+            - dash
       expose:
         - 8000
       ports:
         - 8000:8000
 #      command: honcho start
-      command: python web.py
+      command: pipenv run python dash.py
 
 #    #############
 #    ## MongoDB ##
