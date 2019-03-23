@@ -2,7 +2,7 @@
 FROM python:alpine
 
 # Installing necessary components
-RUN apk add musl-dev gcc tzdata
+RUN apk add musl-dev gcc tzdata pipenv
 
 # Adjust Time Zone
 ENV TZ=America/Sao_Paulo
@@ -15,6 +15,4 @@ COPY . /web
 WORKDIR /web
 
 # Install requirements
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-RUN pip install -r requirements-dev.txt
+RUN pipenv install
