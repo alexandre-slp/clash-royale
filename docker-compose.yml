@@ -6,9 +6,9 @@ networks:
 
 services:
 
-    #########
+    ##########
     ## dash ##
-    #########
+    ##########
     dash:
       container_name: dash
       hostname: dash
@@ -33,8 +33,6 @@ services:
         default_network:
           aliases:
             - dash
-      expose:
-        - 8000
       ports:
         - 8000:8000
 #      command: honcho start
@@ -53,8 +51,6 @@ services:
 #        default_network:
 #          aliases:
 #            - mongodb
-#      expose:
-#        - 27017
 #      ports:
 #        - 27017:27017
 #
@@ -76,7 +72,5 @@ services:
 #        default_network:
 #          aliases:
 #            - nosqlclient
-#      expose:
-#        - 3000
 #      ports:
 #        - 9000:3000
