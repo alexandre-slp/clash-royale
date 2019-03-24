@@ -108,6 +108,3 @@ venv.bak/
 
 # Mongodb
 data
-
-# Pipenv
-.lock

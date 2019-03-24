@@ -36,7 +36,7 @@ services:
       ports:
         - 8000:8000
 #      command: honcho start
-      command: pipenv run python dash.py
+      command: pipenv run python app.py
 
 #    #############
 #    ## MongoDB ##
