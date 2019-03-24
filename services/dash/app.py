@@ -1,6 +1,7 @@
 """
 Main app
 """
+from settings import HOST, PORT
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -31,4 +32,4 @@ app.layout = html.Div(children=[
 ])
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8000)
+    app.run_server(host=HOST, port=PORT)
