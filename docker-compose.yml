@@ -5,9 +5,6 @@ networks:
     driver: bridge
 
 services:
-    ##########
-    ## dash ##
-    ##########
     dash:
       container_name: dash
       hostname: dash
@@ -36,9 +33,6 @@ services:
         - 8000:80
       command: pipenv run honcho start
 
-    #############
-    ## MongoDB ##
-    #############
     mongodb:
       container_name: mongodb
       hostname: mongodb
@@ -52,10 +46,6 @@ services:
       ports:
         - 27017:27017
 
-    ###################################
-    ## NoSQLClient (Management Tool) ##
-    ## MongoDB visualizer            ##
-    ###################################
     nosqlclient:
       container_name: nosqlclient
       hostname: nosqlclient
